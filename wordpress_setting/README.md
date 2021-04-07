@@ -1,6 +1,6 @@
 # Ansible
 
-<h3> [Master node] </h3>
+<h2> [Master node] </h2>
 OS : CentOS 7 <p>
 hostname : matser <p>
 pkg : epel-release, ansible <p>
