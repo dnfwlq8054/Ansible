@@ -1,0 +1,18 @@
+---
+- hosts : webserver
+  become : true
+  roles :
+    #- apache
+
+- hosts : webserver
+  become : true
+  vars_files :
+    - wpVar_file.yml
+  roles :
+    - wordpress 
+
+- hosts : dbserver
+  become : true
+  roles :
+#    - mariadb
+

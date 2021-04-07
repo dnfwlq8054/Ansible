@@ -1,0 +1,17 @@
+---
+- name : intall http
+  yum : 
+    name : httpd
+    state : latest
+
+- name : create index.html
+  become : yes
+  action : shell cd /var/www/html && touch index.html && echo "hello~~" >> index.html
+
+- name : start http
+  systemd :
+    name : httpd
+    state : started
+    enabled : yes
+
+

@@ -1,0 +1,32 @@
+---
+- name : install mariadb
+  yum :
+    name : "{{ item }}"
+    update_cache : yes
+    state : latest
+  loop : ['mariadb-server', 'python3-PyMySQL', 'MySQL-python' ]
+
+- name : db remote access setting
+  action : shell sudo echo "bind-address=0.0.0.0" >> /etc/my.cnf
+
+- name : db start
+  systemd :
+    name : mariadb
+    state : restarted
+
+- name : create database for wordpress
+  mysql_db :
+    name : 'wordpress'
+    state : present
+    login_user : 'root'
+    login_password : ''
+
+- name : create mariadb user
+  mysql_user:
+    name : 'wpuser'
+    password: 'wppass'
+    host : '%'
+    priv: 'wordpress.*:ALL'
+    state : present
+    login_user : 'root'
+    login_password: ''

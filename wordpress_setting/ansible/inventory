@@ -1,0 +1,9 @@
+node01
+node03
+
+[webserver]
+node01
+
+[dbserver]
+node03
+

@@ -1,0 +1,26 @@
+---
+- name : install httpd php php-mysql php-gd php-mbstring wget unzip
+  yum :
+    name : "{{ item }}"
+    update_cache : yes
+    state : latest
+  loop : [ 'php', 'php-mysql', 'php-gd', 'php-mbstring','wget' 'unzip'  ]
+
+- name : install wordpress
+  get_url : url={{ wp_link }} dest={{ wp_dest }}
+
+- name : unzip!!
+  action : shell cd {{ wp_dest }} && unzip wordpress-4.8.2-ko_KR.zip
+
+- name : set ownership
+  file :
+    path : "{{ wp_dest }}/wordpress"
+    state : directory
+    recurse : yes
+    owner : apache
+    group : apache
+
+- name : httpd restart
+  systemd :
+    name : httpd
+    state : restarted

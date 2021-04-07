@@ -1,0 +1,4 @@
+#Wordpress var
+wp_link : "https://ko.wordpress.org/wordpress-4.8.2-ko_KR.zip"
+wp_dest : "/var/www/html"
+
