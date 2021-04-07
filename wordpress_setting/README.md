@@ -1,7 +1,20 @@
 # Ansible
 
-Master node 1
-web node 1
-db node 1
+<h3> Master node </h3>
+OS : CentOS 7
+hostname : matser
+pkg : epel-release, ansible
+ipaddr : 192.168.0.19
 
-OS : CentOS7
+<h3> web node </h3>
+OS : CentOS 7
+hostname : node01
+ipaddr : 192.168.0.20
+
+<h3> db node </h3>
+OS : CentOS 7
+hostname : node03
+ipaddr : 192.168.0.50
+
+user name : hwan
+user group : wheel
