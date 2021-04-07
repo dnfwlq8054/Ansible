@@ -10,7 +10,7 @@
   get_url : url={{ wp_link }} dest={{ wp_dest }}
 
 - name : unzip!!
-  action : shell cd {{ wp_dest }} && unzip wordpress-4.8.2-ko_KR.zip
+  action : shell cd {{ wp_dest }} && rm -rf wordpress && unzip wordpress-4.8.2-ko_KR.zip
 
 - name : set ownership
   file :
