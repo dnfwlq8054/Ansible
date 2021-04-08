@@ -4,7 +4,7 @@
     name : "{{ item }}"
     update_cache : yes
     state : latest
-  loop : [ 'php', 'php-mysql', 'php-gd', 'php-mbstring','wget' 'unzip'  ]
+  loop : [ 'php', 'php-mysql', 'php-gd', 'php-mbstring','wget', 'unzip'  ]
 
 - name : install wordpress
   get_url : url={{ wp_link }} dest={{ wp_dest }}
@@ -19,6 +19,11 @@
     recurse : yes
     owner : apache
     group : apache
+
+- name : setEnforce
+  selinux:
+    policy: targeted
+    state: permissive
 
 - name : httpd restart
   systemd :

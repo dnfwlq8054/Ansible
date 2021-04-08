@@ -14,4 +14,12 @@
     state : started
     enabled : yes
 
+- name: Open port 80 for http access
+  firewalld:
+    service: http
+    permanent: true
+    state: enabled
+
+- name: reload firewalld
+  command: firewall-cmd --reload
 
